@@ -37,6 +37,9 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   
   <style>
+	 
+	  
+	  
 	  
 	table, th, td 
 	{
@@ -106,9 +109,9 @@ if ($result->num_rows > 0) {
 
 $db->close();
 ?>
-
-</html>
 </body>
+</html>
+
 
 
 		

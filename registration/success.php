@@ -50,17 +50,55 @@ $db->close();
 	<title>Success</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<style>
-	  
-	table, th, td 
+	 table, th, td 
 	{
     border: 1px solid black;
 	}
 	
 	th, td
 	{padding: 15px;}
+	
+	body {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 10%;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #5F9EA0;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+	 
 </style>
 </head>
 <body>
+<ul>
+  <li><a class="active" href="index.php">Home</a></li>
+  <li><a href="book.php">Book Hall</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
 
 <div class="header">
 	<h2>Success Page</h2>

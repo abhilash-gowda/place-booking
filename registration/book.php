@@ -12,26 +12,13 @@
   	header("location: login.php");
   }
 ?>
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
 
 
 	<title>Home</title>
-	<style>
-	  
-	table, th, td 
-	{
-    border: 1px solid black;
-	}
-	
-	th, td
-	{padding: 15px;}
-	
-	 body {
+	<style> body {
   margin: 0;
 }
 
@@ -62,9 +49,8 @@ li a:hover:not(.active) {
   background-color: #555;
   color: white;
 }
-
-
-	</style>
+</style>
+	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	
 	
@@ -92,7 +78,7 @@ li a:hover:not(.active) {
 
 
 <div class="header">
-	<h2>DASH BOARD</h2>
+	<h2>BOOK HALL</h2>
 </div>
 <div class="content">
   	<!-- notification message -->
@@ -110,48 +96,73 @@ li a:hover:not(.active) {
 
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['username'])) : ?>
-    	<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+	
+    	<p>Hello <strong><?php echo $_SESSION['username']; ?>    </strong>&nbsp book your HALL!!</p>
     	<p> <a href="log.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 </div>
-<br>
-<div align="center">
-<h4>ALL BOOKING DETAILS<h4>
+
+		<form method="post" action="index.php">
+		<h3>SLOT BOOKING</h3>
+		
+		<br><br>
+		<div class="input-group">
+  		<label>DEPARTMENT NAME</label>
+		<select size="1" name="dept" input type="dept">
+		<option value="MCA">MCA</option>
+		<option value="MBA">MBA</option>
+		<option value="Mechanical">Mechanical</option>
+		<option value="Electrical">Electrical</option>
+		</select>
+		</div>
+		
+		<div class="input-group">
+  		<label>FACULTY NAME</label>
+  		<input type="fac" name="fac">
+		</div>
+		
+		<div class="input-group">
+  		<label>HALL REQUIRED</label>
+		
+	<select size="1" name="hall" input type="hall">
+    <option value="FDC">FDC</option>
+    <option value="BSN">BSN</option>
+    <option value="MAIN LIBRARY">MAIN LIBRARY</option>
+    <option value="NEW AUDI">NEW AUDI</option>
+	</select>
+		</div>
+
+<div class="form-group">
+  <label for="rank" class="cols-sm-2 control-label">Date</label>
+   <div class="cols-sm-10">
+    <div class="input-group">
+     <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+     <input type="date"  id="txtDate" required="Required" class="form-control" name="txtDate" placeholder="Select suitable date" />
+    </div>
+  </div>
 </div>
-<?php
-// RETRIEVE DATA IN TABLE FORMAT
-$username = "";
-$email    = "";
-$errors = array(); 
+	
+	
+	<div class="input-group">
+  		<label>Event Name</label>
+  		<input type="text" name="slot_event">
+  	</div>
+	
+  	<div class="input-group">
+  		<button type="submit" class="btn" name="book_slot">Submit</button>
+  	</div>
+	
+	<div id="Datepicker1"></div>
 
-// connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+<script>
+var today = new Date().toISOString().split('T')[0];
+var nextWeekDate = new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+document.getElementsByName("txtDate")[0].setAttribute('min', today);
+document.getElementsByName("txtDate")[0].setAttribute('max', nextWeekDate)
 
-//$sql ="DELETE FROM slot WHERE dept ='MCA' ";
-$sql ="DELETE FROM slot WHERE txtDate < CURDATE() ";
-$result = $db->query($sql);
+</script>
 
-$sql= "SELECT slot_id, dept, fac, hall , txtDate, slot_event FROM slot ORDER BY txtDate DESC";
-$result = $db->query($sql);
-
-
-
-
-
-
-if ($result->num_rows > 0) {
-    echo "<center><table><tr><th>BOOKED DATE</th><th>DEPARTMENT NAME</th><th>FACULTY NAME</th><th>HALL NAME</th><th>EVENT NAME</th></tr></center>";
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["txtDate"]. "</td><td>" . $row["dept"]. " </td><td>" . $row["fac"]. "</td><td>" . $row["hall"]. "</td><td>" . $row["slot_event"]. " </td></tr>";
-    }
-    echo "</table>";
-} else {
-    echo "0 results";
-}
-
-$db->close();
-?>
+</form>
 
 </body>
 
