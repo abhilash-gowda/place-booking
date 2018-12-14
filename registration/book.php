@@ -108,7 +108,7 @@ li a:hover:not(.active) {
 		<br><br>
 		<div class="input-group">
   		<label>DEPARTMENT NAME</label>
-		<select size="1" name="dept" input type="dept">
+		<select size="1" name="dept" input type="dept" required>
 		<option value="MCA">MCA</option>
 		<option value="MBA">MBA</option>
 		<option value="Mechanical">Mechanical</option>
@@ -116,15 +116,15 @@ li a:hover:not(.active) {
 		</select>
 		</div>
 		
-		<div class="input-group">
+		<div class="input-group" >
   		<label>FACULTY NAME</label>
-  		<input type="fac" name="fac">
+  		<input type="fac" name="fac" required>
 		</div>
 		
 		<div class="input-group">
   		<label>HALL REQUIRED</label>
 		
-	<select size="1" name="hall" input type="hall">
+	<select size="1" name="hall" input type="hall" required>
     <option value="FDC">FDC</option>
     <option value="BSN">BSN</option>
     <option value="MAIN LIBRARY">MAIN LIBRARY</option>
@@ -137,7 +137,7 @@ li a:hover:not(.active) {
    <div class="cols-sm-10">
     <div class="input-group">
      <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-     <input type="date"  id="txtDate" required="Required" class="form-control" name="txtDate" placeholder="Select suitable date" />
+     <input type="date"  id="txtDate" required="Required" class="form-control" name="txtDate" placeholder="Select suitable date" required />
     </div>
   </div>
 </div>
@@ -145,11 +145,11 @@ li a:hover:not(.active) {
 	
 	<div class="input-group">
   		<label>Event Name</label>
-  		<input type="text" name="slot_event">
+  		<input type="text" name="slot_event" required>
   	</div>
 	
   	<div class="input-group">
-  		<button type="submit" class="btn" name="book_slot">Submit</button>
+  		<button type="submit" class="btn" name="book_slot" required >Submit</button>
   	</div>
 	
 	<div id="Datepicker1"></div>

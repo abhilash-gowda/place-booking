@@ -146,9 +146,7 @@ if ($result->num_rows > 0) {
         echo "<tr><td>" . $row["txtDate"]. "</td><td>" . $row["dept"]. " </td><td>" . $row["fac"]. "</td><td>" . $row["hall"]. "</td><td>" . $row["slot_event"]. " </td></tr>";
     }
     echo "</table>";
-} else {
-    echo "0 results";
-}
+} 
 
 $db->close();
 ?>

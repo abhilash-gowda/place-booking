@@ -93,6 +93,10 @@ $db = mysqli_connect('localhost', 'root', '', 'registration');
 
 //(From_date BETWEEN '2013-01-03'AND '2013-01-09'
 //$sql = "SELECT slot_id, dept, fac, hall , txtDate, slot_event FROM slot ORDER BY txtDate DESC";
+$sql ="DELETE FROM slot WHERE txtDate < CURDATE() ";
+$result = $db->query($sql);
+
+
 $sql = "SELECT slot_id, dept, fac, hall , txtDate, slot_event FROM slot ORDER BY txtDate DESC";
 $result = $db->query($sql);
 
@@ -103,9 +107,7 @@ if ($result->num_rows > 0) {
         echo "<tr><td>" . $row["txtDate"]. "</td><td>" . $row["dept"]. " </td><td>" . $row["fac"]. "</td><td>" . $row["hall"]. "</td><td>" . $row["slot_event"]. " </td></tr>";
     }
     echo "</table>";
-} else {
-    echo "0 results";
-}
+} 
 
 $db->close();
 ?>
